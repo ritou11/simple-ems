@@ -23,11 +23,16 @@ class Bs:
         self.edges = list()
     state = False
     island = -1
+    kv = -1
 
 class Island:
-    def __init(self):
+    def __init__(self):
         self.bss = list()
 
+class Kv:
+    def __init__(self):
+        self.bss = list()        
+    
 with open('homework.json', 'r') as f:
     data = json.load(f)
 title = data['title']
@@ -48,6 +53,8 @@ for i in range(0,m):
 
 bfs_queue = Queue()
 bss = list()
+islands = list()
+kvs = list()
 
 for i in range(1, n + 1):
     if nds[i].state:
@@ -57,7 +64,7 @@ for i in range(1, n + 1):
     while not bfs_queue.empty():
         i = bfs_queue.get()
         nds[i].bs = len(bss) - 1
-        bss[len(bss) - 1].nodes.append(i)
+        bss[-1].nodes.append(i)
         nds[i].state = True
         for ei in nds[i].edges:
             e = edges[ei]
@@ -76,10 +83,44 @@ for i, e in enumerate(edges):
             bss[nds[e['from']].bs].edges.append(i)
             bss[nds[e['to']].bs].edges.append(i)
 
-for i, bs in enumerate(bss):
+for k, bs in enumerate(bss):
     if bs.state:
         continue
-
+    islands.append(Island())
+    bfs_queue.put(k)
+    while not bfs_queue.empty():
+        i = bfs_queue.get()
+        bss[i].island = len(islands) - 1
+        islands[-1].bss.append(i)
+        bss[i].state = True
+        for ei in bss[i].edges:
+            e = edges[ei]
+            if e['type'] == 'LINE' or e['type'] == 'TRFM':
+                qi = nds[e['from']].bs + nds[e['to']].bs - i
+                if not bss[qi].state:
+                    bfs_queue.put(qi)
+for bs in bss:
+    bs.state = False
+for k, bs in enumerate(bss):
+    if bs.state:
+        continue
+    kvs.append(Kv())
+    bfs_queue.put(k)
+    while not bfs_queue.empty():
+        i = bfs_queue.get()
+        bss[i].kv = len(kvs) - 1
+        kvs[-1].bss.append(i)
+        bss[i].state = True
+        for ei in bss[i].edges:
+            e = edges[ei]
+            if e['type'] == 'CB':
+                qi = nds[e['from']].bs + nds[e['to']].bs - i
+                if not bss[qi].state:
+                    bfs_queue.put(qi)
 
 for i, bs in enumerate(bss):
     print('BS%d:%s' % (i + 1, bs.nodes))
+for i, island in enumerate(islands):
+    print('Island%d:%s' % (i + 1, [x + 1 for x in island.bss]))
+for i, kv in enumerate(kvs):
+    print('KV%d:%s' % (min(kv.bss) + 1, [x + 1 for x in kv.bss]))
