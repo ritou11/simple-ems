@@ -1,0 +1,37 @@
+{
+	"title":"Example Grid",
+	"node_count":16,
+	"edges":[{
+		"label":"cb1",
+		"from":1,
+		"to":1,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"trfm1",
+		"from":1,
+		"to":1,
+		"type":"TRFM",
+		"from_kv":400,
+		"to_kv":800,
+		"xf":1.2
+	},{
+		"label":"line1",
+		"from":1,
+		"to":1,
+		"type":"LINE",
+		"x":0.01,
+		"r":0.001
+	},{
+		"label":"bus1",
+		"from":1,
+		"to":1,
+		"type":"BUS"
+	},{
+		"label":"load1",
+		"at":1,
+		"type":"LOAD",
+		"P":100,
+		"Q":100
+	}]
+}
