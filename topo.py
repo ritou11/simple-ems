@@ -147,16 +147,19 @@ def main(filename):
     # Print bs
     for i, bs in enumerate(bss):
         print('bs%d(%s)' % (i + 1, ','.join(map(str, bs.nodes))))
+    print()
     # Print islands
     for i, island in enumerate(islands):
         print('island%d(%s)' %
               (i + 1, ','.join(['bs%d' % (x + 1) for x in island.bss])))
+    print()
     # Print kv
     # According to Prof.Wu's ppt, the minimum id of bs defines the id of kv
     # Ref: 6EMS1, page 34, kv5
     for i, kv in enumerate(kvs):
         print('kv%d(%s)' %
               (min(kv.bss) + 1, ','.join(['bs%d' % (x + 1) for x in kv.bss])))
+    print()
     # Print bs topo
     print('bs topo:')
     bs_edges = set()
