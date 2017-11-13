@@ -11,8 +11,6 @@ Power Grid Topo Analyser
 import sys
 import json
 from queue import Queue
-# TODO: Seperate into functions
-# TODO: Add notes
 
 
 class Node:
@@ -20,6 +18,7 @@ class Node:
         self.edges = list()
     bs = -1
     state = False
+# Prototype of node
 
 
 class Bs:
@@ -29,26 +28,36 @@ class Bs:
     state = False
     island = -1
     kv = -1
+# Prototype of bs
 
 
 class Island:
     def __init__(self):
         self.bss = list()
+# Prototype of island
 
 
 class Kv:
     def __init__(self):
         self.bss = list()
+# Prototype of kv
 
 
 def main(filename):
+    # Load data
     with open(filename, 'r') as f:
         data = json.load(f)
+    # Grid title, unused
     title = data['title']
+    # Number of nodes
     n = data['node_count']
+    # Devices
     edges = data['edges']
+    # Number of devices
     m = len(edges)
+    # Nodes
     nds = [Node() for i in range(0, n + 1)]
+    # Sort node infomation
     for i in range(0, m):
         if 'from' in edges[i].keys():
             fr = edges[i]['from']
@@ -59,12 +68,15 @@ def main(filename):
         if 'at' in edges[i].keys():
             at = edges[i]['at']
             nds[at].edges.append(i)
-
+    # Queue used for BFS
     bfs_queue = Queue()
+    # Collection of bs
     bss = list()
+    # Collections of islands
     islands = list()
+    # Collections of kv
     kvs = list()
-
+    # BFS nodes to find bs
     for k in range(1, n + 1):
         if nds[k].state:
             continue
@@ -87,13 +99,13 @@ def main(filename):
                     if not nds[qi].state:
                         bfs_queue.put(qi)
                         nds[qi].state = True
-
+    # Find out the devices between bs
     for i, e in enumerate(edges):
         if e['type'] == 'LINE' or e['type'] == 'TRFM' or e['type'] == 'CB':
             if nds[e['from']].bs != nds[e['to']].bs:
                 bss[nds[e['from']].bs].edges.append(i)
                 bss[nds[e['to']].bs].edges.append(i)
-
+    # BFS bs to find islands
     for k, bs in enumerate(bss):
         if bs.state:
             continue
@@ -111,8 +123,10 @@ def main(filename):
                     if not bss[qi].state:
                         bfs_queue.put(qi)
                         bss[qi].state = True
+    # init bs state for BFS later
     for bs in bss:
         bs.state = False
+    # BFS bs to find kv
     for k, bs in enumerate(bss):
         if bs.state:
             continue
@@ -130,16 +144,21 @@ def main(filename):
                     if not bss[qi].state:
                         bfs_queue.put(qi)
                         bss[qi].state = True
-
+    # Print bs
     for i, bs in enumerate(bss):
         print('bs%d(%s)' % (i + 1, ','.join(map(str, bs.nodes))))
+    # Print islands
     for i, island in enumerate(islands):
         print('island%d(%s)' %
               (i + 1, ','.join(['bs%d' % (x + 1) for x in island.bss])))
+    # Print kv
+    # According to Prof.Wu's ppt, the minimum id of bs defines the id of kv
+    # Ref: 6EMS1, page 34, kv5
     for i, kv in enumerate(kvs):
         print('kv%d(%s)' %
               (min(kv.bss) + 1, ','.join(['bs%d' % (x + 1) for x in kv.bss])))
-    print()
+    # Print bs topo
+    print('bs topo:')
     bs_edges = set()
     for bs in bss:
         bs_edges.update(bs.edges)
@@ -147,6 +166,7 @@ def main(filename):
         if 'at' in e.keys():
             bs_edges.add(k)
     for i in bs_edges:
+        # Do not include cb
         if edges[i]['type'] == 'CB':
             pass
         elif 'at' in edges[i].keys():
