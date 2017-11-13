@@ -12,7 +12,6 @@ import sys
 import json
 from queue import Queue
 # TODO: Seperate into functions
-# TODO: Print node topo
 # TODO: Add notes
 
 
@@ -131,13 +130,34 @@ def main(filename):
                     if not bss[qi].state:
                         bfs_queue.put(qi)
                         bss[qi].state = True
-    # TODO: Print friendly
+
     for i, bs in enumerate(bss):
-        print('BS%d:%s' % (i + 1, bs.nodes))
+        print('bs%d(%s)' % (i + 1, ','.join(map(str, bs.nodes))))
     for i, island in enumerate(islands):
-        print('Island%d:%s' % (i + 1, [x + 1 for x in island.bss]))
+        print('island%d(%s)' %
+              (i + 1, ','.join(['bs%d' % (x + 1) for x in island.bss])))
     for i, kv in enumerate(kvs):
-        print('KV%d:%s' % (min(kv.bss) + 1, [x + 1 for x in kv.bss]))
+        print('kv%d(%s)' %
+              (min(kv.bss) + 1, ','.join(['bs%d' % (x + 1) for x in kv.bss])))
+    print()
+    bs_edges = set()
+    for bs in bss:
+        bs_edges.update(bs.edges)
+    for k, e in enumerate(edges):
+        if 'at' in e.keys():
+            bs_edges.add(k)
+    for i in bs_edges:
+        if edges[i]['type'] == 'CB':
+            pass
+        elif 'at' in edges[i].keys():
+            print('%s at bs%d' % (
+                edges[i]['label'],
+                nds[edges[i]['at']].bs + 1))
+        else:
+            print('%s from bs%d to bs%d' % (
+                edges[i]['label'],
+                nds[edges[i]['from']].bs + 1,
+                nds[edges[i]['to']].bs + 1))
 
 
 if __name__ == '__main__':
