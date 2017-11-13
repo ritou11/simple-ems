@@ -1,6 +1,6 @@
 {
 	"title":"Homework Grid",
-	"node_count":16,
+	"node_count":45,
 	"edges":[{
 		"label":"cb1",
 		"from":1,
@@ -9,97 +9,311 @@
 		"state":true
 	},{
 		"label":"cb2",
-		"from":3,
-		"to":4,
-		"type":"CB",
-		"state":true
-	},{
-		"label":"cb3",
-		"from":5,
-		"to":6,
-		"type":"CB",
-		"state":true
-	},{
-		"label":"cb4",
-		"from":8,
-		"to":9,
-		"type":"CB",
-		"state":true
-	},{
-		"label":"cb5",
-		"from":10,
-		"to":11,
-		"type":"CB",
-		"state":true
-	},{
-		"label":"cb6",
-		"from":12,
-		"to":13,
-		"type":"CB",
-		"state":false
-	},{
-		"label":"cb7",
-		"from":15,
-		"to":16,
-		"type":"CB",
-		"state":true
-	},{
-		"label":"cb8",
-		"from":1,
-		"to":3,
-		"type":"CB",
-		"state":false
-	},{
-		"label":"cb9",
 		"from":2,
 		"to":3,
 		"type":"CB",
 		"state":true
 	},{
-		"label":"cb10",
+		"label":"cb3",
+		"from":4,
+		"to":5,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb4",
+		"from":45,
+		"to":6,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb5",
+		"from":5,
+		"to":8,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb6",
+		"from":5,
+		"to":7,
+		"type":"CB",
+		"state":false
+	},{
+		"label":"cb7",
 		"from":6,
 		"to":7,
 		"type":"CB",
 		"state":true
 	},{
-		"label":"cb11",
+		"label":"cb8",
+		"from":6,
+		"to":8,
+		"type":"CB",
+		"state":false
+	},{
+		"label":"cb9",
 		"from":7,
 		"to":8,
 		"type":"CB",
 		"state":true
 	},{
+		"label":"cb10",
+		"from":7,
+		"to":9,
+		"type":"CB",
+		"state":false
+	},{
+		"label":"cb11",
+		"from":8,
+		"to":9,
+		"type":"CB",
+		"state":true
+	},{
 		"label":"cb12",
+		"from":7,
+		"to":10,
+		"type":"CB",
+		"state":false
+	},{
+		"label":"cb13",
+		"from":9,
+		"to":12,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb14",
+		"from":10,
+		"to":11,
+		"type":"CB",
+		"state":false
+	},{
+		"label":"cb15",
+		"from":13,
+		"to":14,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb16",
 		"from":14,
 		"to":15,
 		"type":"CB",
 		"state":true
 	},{
+		"label":"cb17",
+		"from":15,
+		"to":16,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb18",
+		"from":16,
+		"to":17,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb19",
+		"from":15,
+		"to":18,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb20",
+		"from":19,
+		"to":20,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb21",
+		"from":22,
+		"to":21,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb22",
+		"from":20,
+		"to":22,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb23",
+		"from":20,
+		"to":23,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb24",
+		"from":24,
+		"to":25,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb25",
+		"from":24,
+		"to":26,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb26",
+		"from":25,
+		"to":27,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb27",
+		"from":26,
+		"to":28,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb28",
+		"from":29,
+		"to":27,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb29",
+		"from":30,
+		"to":28,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb30",
+		"from":31,
+		"to":29,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb31",
+		"from":32,
+		"to":30,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb32",
+		"from":33,
+		"to":31,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb33",
+		"from":34,
+		"to":32,
+		"type":"CB",
+		"state":false
+	},{
+		"label":"cb34",
+		"from":33,
+		"to":35,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb35",
+		"from":34,
+		"to":35,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb36",
+		"from":35,
+		"to":36,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb37",
+		"from":30,
+		"to":37,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb38",
+		"from":37,
+		"to":38,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb39",
+		"from":38,
+		"to":39,
+		"type":"CB",
+		"state":false
+	},{
+		"label":"cb40",
+		"from":42,
+		"to":43,
+		"type":"CB",
+		"state":true
+	},{
+		"label":"cb41",
+		"from":40,
+		"to":44,
+		"type":"CB",
+		"state":true
+	},{
 		"label":"trfm1",
-		"from":13,
-		"to":14,
+		"from":3,
+		"to":4,
 		"type":"TRFM"
 	},{
-		"label":"line1",
-		"from":4,
-		"to":5,
+		"label":"trfm2-1",
+		"from":39,
+		"to":41,
+		"type":"TRFM"
+	},{
+		"label":"trfm2-2",
+		"from":40,
+		"to":41,
+		"type":"TRFM"
+	},{
+		"label":"trfm2-3",
+		"from":42,
+		"to":41,
+		"type":"TRFM"
+	},{
+		"label":"line2-3",
+		"from":12,
+		"to":13,
 		"type":"LINE"
 	},{
-		"label":"line2",
-		"from":11,
-		"to":12,
+		"label":"line2-4",
+		"from":45,
+		"to":29,
 		"type":"LINE"
 	},{
-		"label":"bus1",
-		"from":7,
-		"to":10,
-		"type":"BUS"
+		"label":"line3-5",
+		"from":18,
+		"to":19,
+		"type":"LINE"
+	},{
+		"label":"line4-5",
+		"from":24,
+		"to":23,
+		"type":"LINE"
+	},{
+		"label":"load1",
+		"at":11,
+		"type":"LOAD"
 	},{
 		"label":"load2",
-		"at":9,
+		"at":17,
 		"type":"LOAD"
 	},{
 		"label":"load3",
-		"at":16,
+		"at":21,
+		"type":"LOAD"
+	},{
+		"label":"load4",
+		"at":36,
+		"type":"LOAD"
+	},{
+		"label":"load5",
+		"at":43,
+		"type":"LOAD"
+	},{
+		"label":"load6",
+		"at":44,
+		"type":"LOAD"
+	},{
+		"label":"unit1",
+		"at":1,
 		"type":"LOAD"
 	}]
 }
